@@ -87,6 +87,13 @@ find_package(ZLIB REQUIRED)
 target_link_libraries(${EASYZIP_LIB_NAME} PUBLIC 
 	ZLIB::ZLIB)
 
+target_include_directories(
+    ${PROJECT_NAME}
+    INTERFACE
+    $<INSTALL_INTERFACE:include>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+)
+
 install(DIRECTORY ../include/easyzip 	DESTINATION include)
 
 install(TARGETS ${EASYZIP_LIB_NAME} EXPORT ${EASYZIP_LIB_NAME}Targets
